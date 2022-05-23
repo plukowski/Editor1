@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edytor</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="texture-editor">
+        <div class="svg-canvas-container">
+            <svg id="svg-canvas" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="gray" />
+            </svg>
+        </div>
+        <div class="toolbar-containter">
+            <div class="toolbar-header">
+                <h2>Narzędzia</h2>
+            </div>
+            <div class="toolbar-categories-container">
+                <ol class="toolbar-categories">
+                    <li id="toolbar-category-shapes">Kształty
+                        <ul class="tools">
+
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <div class="toolbar-header">
+                <h2>Paleta</h2>
+            </div>
+            <div class="toolbar-palette-container">
+                <div class="toolbar-palette"></div>
+                <button id="toolbar-palette-add-color-button">Dodaj kolor</button>
+            </div>
+            <div class="toolbar-options-container">
+                <div class="toolbar-option" id="toolbar-option-fill">
+                    <h3>Wypełnienie</h3>
+                    <input type="checkbox" id="toolbar-option-fill-checkbox" />
+                </div>
+            </div>
+            <div class="toolbar-header">
+                <h2>Warstwy</h2>
+            </div>
+            <div class="toolbar-layers-container">
+                <ol class="toolbar-layers">
+
+                </ol>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

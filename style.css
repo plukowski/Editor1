@@ -1,0 +1,10 @@
+*{
+    box-sizing: border-box;
+}
+.texture-editor{
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+.toolbar-header{
+    background-color: aqua;
+}
