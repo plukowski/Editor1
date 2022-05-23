@@ -190,17 +190,18 @@ window.onload = function (event) {
             newSvgElement_1.style.pointerEvents = 'none';
             var name_1 = "layer" + layerCounter.toString();
             newSvgElement_1.setAttribute("id", name_1);
-            var listEntry_1 = document.createElement("li");
-            var newLayer_1 = new Layer(name_1, newSvgElement_1, 'rect', listEntry_1);
+            var listEntry = document.createElement("li");
+            var newLayer_1 = new Layer(name_1, newSvgElement_1, 'rect', listEntry);
             layers.push([name_1, newLayer_1]);
-            listEntry_1.setAttribute("id", name_1);
+            listEntry.setAttribute("id", name_1);
+            listEntry.setAttribute("class", "layer-listentry");
             console.log(layerCounter.toString());
             layerCounter++;
             //Tworzenie nazwy i przycisku usuwania
             var listEntryName = document.createElement("h4");
             listEntryName.innerHTML = name_1;
             listEntryName.style.pointerEvents = 'none';
-            listEntry_1.appendChild(listEntryName);
+            listEntry.appendChild(listEntryName);
             var deleteButton = document.createElement("button");
             deleteButton.setAttribute("class", "delete-layer-button");
             deleteButton.innerHTML = "Usuń";
@@ -212,7 +213,7 @@ window.onload = function (event) {
                 }
             });
             //Zaznaczanie warstwy z listy
-            listEntry_1.addEventListener("click", function (e) {
+            listEntry.addEventListener("click", function (e) {
                 var target = e.target;
                 var id = target.getAttribute("id");
                 for (var _i = 0, layers_1 = layers; _i < layers_1.length; _i++) {
@@ -224,7 +225,7 @@ window.onload = function (event) {
                     }
                 }
             });
-            toolbarLayers.appendChild(listEntry_1);
+            toolbarLayers.appendChild(listEntry);
             selectLayer(newLayer_1);
             // let targetElement = ev.target as HTMLElement;
             // let targetRect = targetElement.getBoundingClientRect();
@@ -239,7 +240,7 @@ window.onload = function (event) {
             newSvgElement_1.setAttribute("y", mouseY.toString());
             //Przepisytwanie wartości do odpowiednich pól
             //Tworzenie modyfikowalnych pól x,y,height,width;
-            function createParameterField(name, svgAttribute) {
+            function createParameterField(name, svgAttribute, container) {
                 var xField = document.createElement("div");
                 xField.setAttribute("class", "layer-parameter-field");
                 xField.setAttribute("id", "layer-parameter-" + name);
@@ -251,15 +252,18 @@ window.onload = function (event) {
                 xName.innerHTML = name;
                 xField.appendChild(xInput);
                 xField.appendChild(xName);
-                listEntry_1.appendChild(xField);
+                container.appendChild(xField);
                 xInput.value = newSvgElement_1.getAttribute(svgAttribute);
             }
-            createParameterField('x', 'x');
-            createParameterField('y', 'y');
-            createParameterField('width', 'width');
-            createParameterField('height', 'height');
+            var layerParametersContainer = document.createElement("div");
+            layerParametersContainer.setAttribute("class", "layer-parameters-container");
+            createParameterField('x', 'x', layerParametersContainer);
+            createParameterField('y', 'y', layerParametersContainer);
+            createParameterField('width', 'width', layerParametersContainer);
+            createParameterField('height', 'height', layerParametersContainer);
+            listEntry.appendChild(layerParametersContainer);
             //Dopisanie przycisku usuwania na końcu;
-            listEntry_1.appendChild(deleteButton);
+            listEntry.appendChild(deleteButton);
             clearLayerHandles();
             createLayerHandles(newLayer_1);
         }

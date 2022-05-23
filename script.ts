@@ -231,6 +231,7 @@ window.onload = (event) => {
             layers.push([name, newLayer]);
 
             listEntry.setAttribute("id", name);
+            listEntry.setAttribute("class", "layer-listentry")
             console.log(layerCounter.toString());
             layerCounter++;
 
@@ -281,7 +282,7 @@ window.onload = (event) => {
             newSvgElement.setAttribute("y", mouseY.toString());
             //Przepisytwanie wartości do odpowiednich pól
             //Tworzenie modyfikowalnych pól x,y,height,width;
-            function createParameterField(name: string, svgAttribute: string){
+            function createParameterField(name: string, svgAttribute: string, container: HTMLDivElement){
                 let xField = document.createElement("div") as HTMLDivElement;
                 xField.setAttribute("class","layer-parameter-field");
                 xField.setAttribute("id","layer-parameter-"+name);
@@ -294,13 +295,16 @@ window.onload = (event) => {
     
                 xField.appendChild(xInput);
                 xField.appendChild(xName);
-                listEntry.appendChild(xField);
+                container.appendChild(xField);
                 xInput.value = newSvgElement.getAttribute(svgAttribute) as string;
             }
-            createParameterField('x','x');
-            createParameterField('y','y');
-            createParameterField('width','width');
-            createParameterField('height','height');
+            let layerParametersContainer = document.createElement("div");
+            layerParametersContainer.setAttribute("class","layer-parameters-container")
+            createParameterField('x','x',layerParametersContainer);
+            createParameterField('y','y',layerParametersContainer);
+            createParameterField('width','width',layerParametersContainer);
+            createParameterField('height','height',layerParametersContainer);
+            listEntry.appendChild(layerParametersContainer);
             //Dopisanie przycisku usuwania na końcu;
             listEntry.appendChild(deleteButton)
 
