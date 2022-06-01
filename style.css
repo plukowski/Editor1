@@ -15,10 +15,14 @@
 .toolbar-layers-container{
     overflow-x: hidden;
     overflow-y: scroll; height: 200px;
+
 }
 
 .toolbar-layers{
     list-style: none;
+    margin: 0px;
+    padding: 0px;
+    height: fit-content;
 }
 
 .layer-listentry{
@@ -26,6 +30,11 @@
     padding: 0px;
     height: fit-content;
 }
+
+.layer-listentry-content-container{
+    display: flex;
+}
+
 
 .layer-parameter-field{
     display: flex;
@@ -41,6 +50,7 @@
 .layer-parameter-name{
     height: fit-content;
     margin: 0px;
+
 }
 
 .layer-parameters-container{

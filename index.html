@@ -31,16 +31,25 @@
                 </ol>
             </div>
             <div class="toolbar-header">
-                <h2>Paleta</h2>
-            </div>
-            <div class="toolbar-palette-container">
-                <div class="toolbar-palette"></div>
-                <button id="toolbar-palette-add-color-button">Dodaj kolor</button>
+                <h2>Opcje</h2>
             </div>
             <div class="toolbar-options-container">
+                <div class="toolbar-option" id="toolbar-option-color">
+                    <h3>Kolor</h3>
+                    <input type="color" id="toolbar-option-color-stroke">
+                    <label for="toolbar-option-color-stroke">Kontur</label>
+                    <input type="color" id="toolbar-option-color-fill">
+                    <label for="toolbar-option-color-fill">Wypełnienie</label>
+                </div>
                 <div class="toolbar-option" id="toolbar-option-fill">
                     <h3>Wypełnienie</h3>
                     <input type="checkbox" id="toolbar-option-fill-checkbox" />
+                </div>
+                <div class="toolbar-option" id="toolbar-option-stroke">
+                    <h3>Grubość konturu</h3>
+                    <input type="text" id="toolbar-option-stroke-width" value="1" readonly="true" >
+                    <button id="toolbar-option-stroke-width-button+">+</button>
+                    <button id="toolbar-option-stroke-width-button-">-</button>
                 </div>
             </div>
             <div class="toolbar-header">
